@@ -1,41 +1,41 @@
 [
   {
-    "img":"https://links.papareact.com/5j2",
+    "img":"/images/exploreNearby-9.jpg",
     "location":"London",
     "distance":"45-minute drive"
   },
   {
-    "img":"https://links.papareact.com/1to",
+    "img":"/images/exploreNearby-2.jpg",
     "location":"Manchester",
     "distance":"4.5-hour drive"
   },
   {
-    "img":"https://links.papareact.com/40m",
+    "img":"/images/exploreNearby-3.jpg",
     "location":"Liverpool",
     "distance":"4.5-hour drive"
     },
   {
-    "img":"https://links.papareact.com/msp",
+    "img":"/images/exploreNearby-4.jpg",
     "location":"York",
     "distance":"4-hour drive"
   },
   {
-    "img":"https://links.papareact.com/2k3",
+    "img":"/images/exploreNearby-5.png",
     "location":"Cardiff",
     "distance":"45-minute drive"
   },
   {
-    "img":"https://links.papareact.com/ynx",
+    "img":"/images/exploreNearby-6.jpg",
     "location":"Birkenhead",
     "distance":"4.5-hour drive"
   },
   {
-    "img":"https://links.papareact.com/kji",
+    "img":"/images/exploreNearby-7.jpg",
     "location":"Newquay",
     "distance":"6-hour drive"
   },
   {
-    "img":"https://links.papareact.com/41m",
+    "img":"/images/exploreNearby-8.jpg",
     "location":"Hove",
     "distance":"2-hour drive"
   }
