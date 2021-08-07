@@ -6,10 +6,18 @@ function MainPage() {
   return (
     <main className="max-w-screen-2xl mx-auto px-10 lg:px-20">
       <ExploreNearby />
+
+      <LargeCards
+        img="/images/large-cards-1.jpg"
+        title="Not sure where to go?"
+        description="Perfect."
+        buttonText="I'm flexible"
+      />
+
       <LiveAnywhere />
 
       <LargeCards
-        img="https://links.papareact.com/4cj"
+        img="/images/large-cards-2.jpg"
         title="The Greatest Outdoors"
         description="Wishlists curated by Aribnb."
         buttonText="Get Inspired"
