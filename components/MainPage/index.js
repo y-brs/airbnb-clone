@@ -1,9 +1,11 @@
 import ExploreNearby from "./ExploreNearby"
+import LiveAnywhere from "./LiveAnywhere"
 
 function MainPage() {
   return (
-    <main className="max-w-7xl mx-auto sm:px-16">
+    <main className="max-w-screen-2xl mx-auto px-10 lg:px-20">
       <ExploreNearby />
+      <LiveAnywhere />
     </main>
   )
 }

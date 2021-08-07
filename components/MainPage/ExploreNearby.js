@@ -1,13 +1,13 @@
 import SmallCards from "./SmallCards"
 
-export default function ExploreNearby() {
+function ExploreNearby() {
   const exploreNearby = require('../../dummyData/exploreNearby.json');
 
   return (
-    <section className="pt-6">
-      <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
+    <section>
+      <h2 className="text-4xl font-semibold pt-14 pb-5">Explore Nearby</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {exploreNearby.map(({ img, distance, location }) => (
           <SmallCards
             key={img}
@@ -21,3 +21,5 @@ export default function ExploreNearby() {
     </section>
   )
 }
+
+export default ExploreNearby

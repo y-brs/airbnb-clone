@@ -4,11 +4,14 @@ import UserBar from "./UserBar"
 
 function Header() {
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
-      <Logo />
-      <SearchBar />
-      <UserBar />
+    <header className="sticky top-0 z-50 bg-white p-3.5 px-10 shadow-md lg:px-20">
+      <div className="max-w-screen-2xl mx-auto grid grid-cols-3">
+        <Logo />
+        <SearchBar />
+        <UserBar />
+      </div>
     </header>
+
   )
 }
 
