@@ -8,10 +8,12 @@ export default function Banner() {
         layout="fill"
         objectFit="cover"
       />
-      <div className="absolute top-[35%] w-[500px] px-10 lg:px-20">
-        <p className="text-[55px] font-semibold leading-none text-white">Olympian & Paralympian Online Experiences</p>
-        <button className="text-black bg-white px-6 py-2 font-semibold text-sm rounded-lg mt-5">Explore now</button>
-      </div>
+      <section className="relative h-full max-w-screen-2xl mx-auto px-10 lg:px-20">
+        <div className="absolute top-[35%] w-[450px] ">
+          <p className="text-[55px] font-semibold leading-none text-white">Olympian & Paralympian Online Experiences</p>
+          <button className="text-black bg-white px-5 py-2 font-semibold text-sm rounded-lg mt-5">Explore now</button>
+        </div>
+      </section>
     </div>
   )
 }

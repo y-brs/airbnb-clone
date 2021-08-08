@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={scrolled ? 'fixed w-full top-0 z-50 bg-white shadow-md' : 'fixed w-full top-0 z-50'}>
+      <header className={scrolled ? 'fixed w-full top-0 z-50 bg-white shadow-md transition transform duration-200' : 'fixed w-full top-0 z-50 transition transform duration-200'}>
         <div className="max-w-screen-2xl mx-auto grid grid-cols-3 p-3.5 px-10 lg:px-20">
           <Logo backgroundFill={scrolled ? '#FF385C' : '#fff'} />
           <SearchBar />
