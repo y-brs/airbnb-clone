@@ -91,7 +91,7 @@ export default function Header({ showBanner, placeholder }) {
         {(searchInput || showResults) ? (
           <>
             <div className="flex">
-              <div className="flex flex-col col-span-3 mx-auto">
+              <div className="flex flex-col col-span-3 mx-auto translate-x lg:-translate-x-20 xl:-translate-x-20">
                 <DateRangePicker
                   ranges={[selectionRange]}
                   onChange={handleSelect}
