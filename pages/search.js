@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import MainPage from '../components/MainPage'
 
-export default function Home() {
+export default function Search() {
   return (
     <>
       <Head>
@@ -11,8 +11,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header showBanner />
-      <MainPage />
+      <Header />
+
+      <h1>
+        Search Page
+      </h1>
+
       <Footer />
     </>
   )
