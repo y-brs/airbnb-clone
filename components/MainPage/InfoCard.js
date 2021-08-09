@@ -4,8 +4,8 @@ import Image from "next/image"
 
 function InfoCard({ img, location, title, description, star, price, total }) {
   return (
-    <div className="flex py-7 border-b cursor-pointer hover:opacity-80 transition duration-200 ease-out first:border-t">
-      <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
+    <div className="flex flex-col md:flex-row py-7 border-b cursor-pointer hover:opacity-80 transition duration-200 ease-out first:border-t">
+      <div className="relative w-auto h-[250px] md:h-24 md:w-40 xl:h-36 xl:w-60 2xl:h-36 2xl:w-60 flex-shrink-0">
         <Image
           src={img}
           layout="fill"
@@ -13,10 +13,13 @@ function InfoCard({ img, location, title, description, star, price, total }) {
           className="rounded-2xl"
         />
       </div>
-      <div className="flex flex-col flex-grow pl-5">
-        <div className="flex justify-between">
+      <div className="flex flex-col flex-grow pt-5 md:pl-5 md:pt-0 ">
+        <div className="flex relative justify-between">
           <p className="text-sm text-gray-500">{location}</p>
-          <HeartIcon className="h-7 cursor-pointer" />
+          <div className="p-3 absolute -top-4 -right-4 cursor-pointer rounded-full transition transform duration-200 hover:bg-gray-100">
+            <HeartIcon className="h-6" />
+          </div>
+
         </div>
 
         <h4 className="text-xl">{title}</h4>
@@ -25,10 +28,11 @@ function InfoCard({ img, location, title, description, star, price, total }) {
 
         <p className="pt-2 text-sm text-gray-500 flex-grow font-light">{description}</p>
 
-        <div className="flex justify-between items-end pt-5">
-          <p className="flex items-center">
+        <div className="flex justify-between items-end pt-5 text-sm">
+          <p className="flex items-center font-semibold">
             <StarIcon className="h-5 text-red-500" />
             {star}
+            <span className="ml-1 font-extralight">(42 reviews)</span>
           </p>
 
           <div>

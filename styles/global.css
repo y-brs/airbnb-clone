@@ -4,4 +4,8 @@
   .btn {
     @apply px-4 py-2 border rounded-full text-sm cursor-pointer transition transform duration-100 ease-out hover:shadow-md active:scale-95 active:bg-gray-100 hover:border-gray-800;
   }
+
+  .menu-link {
+    @apply p-3 px-5 hover:bg-gray-100;
+  }
 }
