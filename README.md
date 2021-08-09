@@ -1,4 +1,4 @@
-# Covid-19 Tracker App
+# Airbnb clone
 
 This Project is a beginner friendly project I built using React, Next.js, TailwindCss. Some key Aspects:
 
@@ -12,6 +12,10 @@ Deployed live on https://airbnb-clone-nu.vercel.app. Check out!
 
 Yooooo! 🚀
 
+![Screenshot 2021-08-10 at 00 08 41](https://user-images.githubusercontent.com/68222437/128775508-9883f248-a30b-43e4-860d-1287d1d68bd1.png)
+![Screenshot 2021-08-10 at 00 09 11](https://user-images.githubusercontent.com/68222437/128775520-78fb98cd-1f58-4d46-9e24-80e2ba03c60b.png)
+![Screenshot 2021-08-10 at 00 09 19](https://user-images.githubusercontent.com/68222437/128775529-9bc86ce3-e116-4ac0-8250-4944f0216674.png)
+![Screenshot 2021-08-10 at 00 09 31](https://user-images.githubusercontent.com/68222437/128775534-2d50c80c-fdaf-4bd4-b76c-c2e021e8662c.png)
 
 
 # Next.js + Tailwind CSS Example
