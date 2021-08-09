@@ -7,13 +7,16 @@ import { SearchIcon, UsersIcon } from "@heroicons/react/solid"
 import "react-date-range/dist/styles.css"
 import "react-date-range/dist/theme/default.css"
 import { DateRangePicker } from "react-date-range"
+import { useRouter } from "next/dist/client/router"
 
-export default function Header({ showBanner }) {
+export default function Header({ showBanner, placeholder }) {
   const [scrolled, setScrolled] = useState(false)
   const [searchInput, setSearchInput] = useState('')
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
-  const [noOGuests, setNoOGuests] = useState(1)
+  const [noOfGuests, setNoOfGuests] = useState(1)
+
+  const router = useRouter();
 
   const selectionRange = {
     startDate: startDate,
@@ -42,6 +45,18 @@ export default function Header({ showBanner }) {
     setEndDate(ranges.selection.endDate);
   }
 
+  const search = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        noOfGuests,
+      }
+    })
+  }
+
   return (
     <>
       <header className={scrolled || searchInput || !showBanner ? 'fixed w-full top-0 z-50 bg-white shadow-md transition transform duration-200' : 'fixed w-full top-0 z-50 transition transform duration-200'}>
@@ -54,7 +69,7 @@ export default function Header({ showBanner }) {
               onChange={(e) => {setSearchInput(e.target.value)}}
               className="flex-grow ml-1 pl-5 outline-none text-sm text-black placeholder-black font-medium"
               type="text"
-              placeholder="Start your search"
+              placeholder={placeholder || "Start your search"}
             />
             <SearchIcon className="hidden h-8 bg-red-500 text-white rounded-full p-2 cursor-pointer mxa-auto transition transform duration-200 md:inline-flex md:mx-2 hover:bg-red-600" />
           </div>
@@ -77,22 +92,23 @@ export default function Header({ showBanner }) {
               <h2 className="text-2xl flex-grow font-semibold">Number of Guests</h2>
               <UsersIcon className="h-5" />
               <input
-                value={noOGuests}
-                onChange={e => setNoOGuests(e.target.value)}
+                className="w-12 pl-2 text-lg outline-none text-red-400"
+                value={noOfGuests}
+                onChange={e => setNoOfGuests(e.target.value)}
                 type="number"
                 min={1}
-                className="w-12 pl-2 text-lg outline-none text-red-400"
               />
             </div>
             <div className="flex mb-5">
               <button
-                onClick={resetInput}
                 className="flex-grow text-gray-500 cursor-pointer"
+                onClick={resetInput}
               >
                 Cancel
               </button>
               <button
                 className="flex-grow text-red-500 cursor-pointer"
+                onClick={search}
               >
                 Search
               </button>
