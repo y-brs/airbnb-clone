@@ -48,38 +48,88 @@ export default function Header({ showBanner, placeholder }) {
   const showHideDatePicker = () => setShowResults(true)
 
   const search = () => {
-    router.push({
-      pathname: "/search",
-      query: {
-        location: searchInput,
-        startDate: startDate.toISOString(),
-        endDate: endDate.toISOString(),
-        noOfGuests,
-      }
-    })
+    const divWrapper = document.querySelector(".divWrapper")
 
-    setShowResults(false)
-    resetInput()
+    if (searchInput) {
+      router.push({
+        pathname: "/search",
+        query: {
+          location: searchInput,
+          startDate: startDate.toISOString(),
+          endDate: endDate.toISOString(),
+          noOfGuests,
+        }
+      })
+
+      divWrapper.classList.remove("bg-red-50", "border-red-500")
+      setShowResults(false)
+      resetInput()
+    } else {
+      divWrapper.classList.add("bg-red-50", "border-red-500")
+    }
   }
 
   return (
     <>
       <header className={scrolled || searchInput || !showBanner || showResults ? 'fixed w-full top-0 z-50 bg-white shadow-md transition transform duration-200' : 'fixed w-full top-0 z-50 transition transform duration-200'}>
-        <div className="max-w-screen-2xl mx-auto flex justify-between p-3.5 px-10 lg:px-20">
+        <div className="max-w-screen-2xl mx-auto flex items-start justify-between p-3.5 px-10 lg:px-20">
           <Logo backgroundFill={scrolled || searchInput || !showBanner || showResults ? '#FF385C' : '#fff'} />
 
-          <div className="flex flex-grow lg:flex-grow-0 lg:w-[40%] ditems-center rounded-full py-2 border border-gray-300 transition transform duration-200 drop-shadow hover:shadow-md bg-white">
+          <div className="flex-grow lg:flex-grow-0 lg:w-[40%]">
+            <div className="divWrapper flex flex-grow items-center rounded-full py-2 border border-gray-300 transition transform duration-200 drop-shadow hover:shadow-md bg-white">
+              <input
+                value={searchInput}
+                onClick={showHideDatePicker}
+                onChange={(e) => {setSearchInput(e.target.value)}}
+                className="flex-grow pl-5 outline-none text-sm text-black placeholder-black font-medium bg-transparent"
+                type="text"
+                placeholder={placeholder || "Start your search"}
+              />
 
-            <input
-              value={searchInput}
-              onClick={showHideDatePicker}
-              onChange={(e) => {setSearchInput(e.target.value)}}
-              className="flex-grow pl-5 outline-none text-sm text-black placeholder-black font-medium bg-transparent"
-              type="text"
-              placeholder={placeholder || "Start your search"}
-            />
+              <SearchIcon className="h-8 md:mx-2 bg-red-500 text-white rounded-full p-2 mr-2 transition transform duration-200" />
+            </div>
 
-            <SearchIcon className="h-8 md:mx-2 bg-red-500 text-white rounded-full p-2 mr-2 transition transform duration-200" />
+            {(searchInput || showResults) ? (
+              <>
+                <div className="flex">
+                  <div className="flex flex-col col-span-3 mx-auto mt-3">
+                    <DateRangePicker
+                      ranges={[selectionRange]}
+                      onChange={handleSelect}
+                      minDate={new Date()}
+                      rangeColors={["#fd5961"]}
+                    />
+                    <div className="flex items-center border-b">
+                      <h2 className="text-xl flex-grow font-semibold">Number of Guests</h2>
+                      <UsersIcon className="h-5" />
+                      <input
+                        className="w-12 pl-2 text-lg outline-none text-red-400"
+                        value={noOfGuests}
+                        onChange={e => setNoOfGuests(e.target.value)}
+                        type="number"
+                        min={1}
+                      />
+                    </div>
+                    <div className="flex my-3 space-x-5">
+                      <button
+                        className="shadow-md flex-grow text-gray-500 cursor-pointer rounded-md p-2 hover:bg-red-400 hover:text-white"
+                        onClick={resetInput}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="shadow-md flex-grow text-red-500 cursor-pointer rounded-md p-2 hover:bg-red-400 hover:text-white"
+                        onClick={search}
+                      >
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              null
+            )}
           </div>
 
           <UserBar
@@ -88,47 +138,7 @@ export default function Header({ showBanner, placeholder }) {
           />
         </div>
 
-        {(searchInput || showResults) ? (
-          <>
-            <div className="flex">
-              <div className="flex flex-col col-span-3 mx-auto translate-x lg:-translate-x-20 xl:-translate-x-20">
-                <DateRangePicker
-                  ranges={[selectionRange]}
-                  onChange={handleSelect}
-                  minDate={new Date()}
-                  rangeColors={["#fd5961"]}
-                />
-                <div className="flex items-center border-b">
-                  <h2 className="text-xl flex-grow font-semibold">Number of Guests</h2>
-                  <UsersIcon className="h-5" />
-                  <input
-                    className="w-12 pl-2 text-lg outline-none text-red-400"
-                    value={noOfGuests}
-                    onChange={e => setNoOfGuests(e.target.value)}
-                    type="number"
-                    min={1}
-                  />
-                </div>
-                <div className="flex my-3 space-x-5">
-                  <button
-                    className="shadow-md flex-grow text-gray-500 cursor-pointer rounded-md p-2 hover:bg-red-400 hover:text-white"
-                    onClick={resetInput}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="shadow-md flex-grow text-red-500 cursor-pointer rounded-md p-2 hover:bg-red-400 hover:text-white"
-                    onClick={search}
-                  >
-                    Search
-                  </button>
-                </div>
-              </div>
-            </div>
-          </>
-        ) : (
-          null
-        )}
+
       </header>
 
       {showBanner && <Banner />}

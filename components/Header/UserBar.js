@@ -4,7 +4,7 @@ import { Menu, Transition } from '@headlessui/react'
 
 function UserBar({ textColor, backgroundFill }) {
   return (
-    <div className="flex pl-8 lg:pl-0 items-center justify-end space-x-1">
+    <div className="flex pl-8 pt-1 lg:pl-0 items-center justify-end space-x-1">
       <div className={`translate-x-2 hidden lg:inline cursor-pointer items-center p-3 rounded-full transition transform duration-200 text-sm hover:bg-white hover:bg-opacity-10 ${backgroundFill}  ${textColor}`}>
         Become a host
       </div>
