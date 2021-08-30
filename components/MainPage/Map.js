@@ -44,7 +44,7 @@ function Map({ searchResults }) {
           >
             <p
               onClick={() => setSelectedLocation(result)}
-              className="cursor-pointer rounded-md w-10 pl-1 hover:animate-bounce"
+              className="cursor-pointer rounded-md w-10 pl-1 animate-bounce"
               aria-label="push-pin"
               role="img"
             >
@@ -67,7 +67,6 @@ function Map({ searchResults }) {
               closeButton={false}
               latitude={result.lat}
               longitude={result.long}
-              // maxWidth={280}
             >
               <div className="p-1 pb-0 m-0 min-w-[280px] relative z-10 rounded-xl cursor-pointer">
                 <div className="relative w-auto h-[150px] mb-2">

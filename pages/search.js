@@ -71,8 +71,10 @@ export default function Search({ searchResults }) {
 }
 
 export async function getServerSideProps() {
-  const searchResults = await fetch("https://links.papareact.com/isz")
-    .then(res => res.json());
+  const searchResults = require('../dummyData/hotelList.json');
+
+  // const searchResults = await fetch("")
+  //   .then(res => res.json());
 
   return {
     props: {
