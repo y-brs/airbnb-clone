@@ -13,13 +13,13 @@ function InfoCard({ img, location, title, description, star, price, total }) {
           className="rounded-2xl"
         />
       </div>
+
       <div className="flex flex-col flex-grow pt-5 md:pl-5 md:pt-0 ">
         <div className="flex relative justify-between">
           <p className="text-sm text-gray-500">{location}</p>
           <div className="p-3 absolute -top-4 -right-4 cursor-pointer rounded-full transition transform duration-200 hover:bg-gray-100">
             <HeartIcon className="h-6" />
           </div>
-
         </div>
 
         <h4 className="text-xl">{title}</h4>
@@ -28,7 +28,7 @@ function InfoCard({ img, location, title, description, star, price, total }) {
 
         <p className="pt-2 text-sm text-gray-500 flex-grow font-light">{description}</p>
 
-        <div className="flex justify-between items-end pt-5 text-sm">
+        <div className="flex justify-between items-end pt-2 text-sm">
           <p className="flex items-center font-semibold">
             <StarIcon className="h-5 text-red-500" />
             {star}

@@ -15,7 +15,7 @@ function UserBar({ textColor, backgroundFill }) {
 
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="flex items-center space-x-2 bg-white text-gray-500 border border-gray-300 p-1 rounded-full transition transform duration-200 hover:shadow-md">
+          <Menu.Button className="flex items-center space-x-2 bg-white text-gray-500 border border-gray-300 p-1 rounded-full transition transform duration-200 outline-none hover:shadow-md">
             <MenuIcon className="h-5 ml-2 cursor-pointer" />
             <UserCircleIcon className="h-8 cursor-pointer" />
           </Menu.Button>

@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import Image from "next/image"
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import { getCenter } from 'geolib'
+import { StarIcon } from "@heroicons/react/solid"
+import { HeartIcon } from "@heroicons/react/outline"
 
 function Map({ searchResults }) {
   const [selectedLocation, setSelectedLocation] = useState({})
@@ -36,33 +39,64 @@ function Map({ searchResults }) {
           <Marker
             longitude={result.long}
             latitude={result.lat}
-            offsetLeft={-12}
-            offsetTop={-10}
+            offsetLeft={-11}
+            offsetTop={-8}
           >
             <p
               onClick={() => setSelectedLocation(result)}
-              className="cursor-pointer text-2xl animate-bounce"
+              className="cursor-pointer rounded-md w-10 pl-1 hover:animate-bounce"
               aria-label="push-pin"
               role="img"
             >
-              📍
+              <Image
+                className="h-8 cursor-pointer z-1"
+                src="/images/pin.png"
+                width="15"
+                height="26"
+                onClick={() => {setSelectedLocation(result);}}
+                alt="Map pin"
+              />
             </p>
           </Marker>
 
-          {/* Popup */}
-
           {selectedLocation.long === result.long ? (
             <Popup
+              className="rounded-2xl p-0 z-10"
               onClose={() => setSelectedLocation({})}
               closeOnClick={true}
+              closeButton={false}
               latitude={result.lat}
               longitude={result.long}
-              className="font-medium text-sm cursor-pointer"
+              // maxWidth={280}
             >
-              {result.price}
+              <div className="p-1 pb-0 m-0 min-w-[280px] relative z-10 rounded-xl cursor-pointer">
+                <div className="relative w-auto h-[150px] mb-2">
+                  <Image
+                    className="rounded"
+                    src={result.img}
+                    layout="fill"
+                    objectFit="cover"
+                    loading="lazy"
+                    alt={result.title}
+                  />
+                </div>
+                <h4 className="text-md">{result.title}</h4>
+                <div className="flex justify-between items-center relative">
+                  <div>
+                    <p className="text-md font-semibold">{result.price}</p>
+                    <p className="cursor-pointer flex items-center text-sm">
+                      <StarIcon className="h-5 text-red-500" />
+                      {result.star}
+                    </p>
+                  </div>
+                  <div className="p-2 absolute -bottom-1 -right-2 cursor-pointer rounded-full transition transform duration-200 hover:bg-gray-100">
+                    <HeartIcon className="h-6" />
+                  </div>
+                </div>
+              </div>
             </Popup>
           ) : (
-            false
+            ""
           )}
         </div>
       ))}
