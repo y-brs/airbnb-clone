@@ -23,7 +23,7 @@ function InfoCard({ img, location, title, description, star, price, total }) {
           </div>
         </div>
 
-        <h4 className="text-xl">{title}</h4>
+        <h4 className="text-xl font-light">{title}</h4>
 
         <div className="border-b w-10 pt-2" />
 
@@ -33,11 +33,11 @@ function InfoCard({ img, location, title, description, star, price, total }) {
           <p className="flex items-center font-semibold">
             <StarIcon className="h-5 text-red-500" />
             {star}
-            <span className="ml-1 font-extralight">(42 reviews)</span>
+            <span className="ml-2 font-light text-gray-500">(42 reviews)</span>
           </p>
 
           <div>
-            <p className="text-lg lg:text-xl font-semibold pb-1">{price}</p>
+            <p className="text-lg lg:text-xl font-semibold pb-1">{price} <span className="font-normal">/ night</span></p>
             <p className="font-extralight">{total}</p>
           </div>
         </div>

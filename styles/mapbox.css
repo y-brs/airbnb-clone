@@ -1,0 +1,10 @@
+.mapboxgl-popup-content {
+  padding: 0;
+  border-radius: 12px;
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: transparent;
+  border-width: 0 !important;
+  height: 10px;
+}

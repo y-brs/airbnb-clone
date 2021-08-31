@@ -17,7 +17,7 @@ function Map({ searchResults }) {
 
   const [viewport, setViewport] = useState({
     width: "100%",
-    height: "100%",
+    height: "100vh",
     longitude: center.longitude,
     latitude: center.latitude,
     zoom: 11
@@ -26,7 +26,7 @@ function Map({ searchResults }) {
 
   return (
     <ReactMapGL
-      mapStyle="mapbox://styles/yarmulnik/cks4uaswj514d17q6ufnbjd99"
+      mapStyle="mapbox://styles/yarmulnik/ckt0bxje8atsk17qhjmq9oney"
       mapboxApiAccessToken={process.env.mapbox_key}
       {...viewport}
       width="100%"
@@ -39,39 +39,34 @@ function Map({ searchResults }) {
           <Marker
             longitude={result.long}
             latitude={result.lat}
-            offsetLeft={-11}
-            offsetTop={-8}
+            offsetLeft={-10}
+            offsetTop={0}
+            onClick={() => setSelectedLocation(result)}
+            className="active:z-20 hover:z-20 z-10"
           >
-            <p
-              onClick={() => setSelectedLocation(result)}
-              className="cursor-pointer rounded-md w-10 pl-1 animate-bounce"
-              aria-label="push-pin"
-              role="img"
-            >
-              <Image
-                className="h-8 cursor-pointer z-1"
-                src="/images/pin.png"
-                width="15"
-                height="26"
-                onClick={() => {setSelectedLocation(result);}}
-                alt="Map pin"
-              />
+            <p className="cursor-pointer rounded-full w-auto py-1 px-2 text-sm font-semibold border hover:drop-shadow-sm bg-white text-black border-gray-300 hover:bg-gray-100 hover:scale-105 active:bg-black active:text-white">
+              {result.price}
             </p>
           </Marker>
 
           {selectedLocation.long === result.long ? (
             <Popup
-              className="rounded-2xl p-0 z-10"
+              className="rounded-2xl p-0 z-50"
+              offsetTop={0}
+              offsetLeft={15}
               onClose={() => setSelectedLocation({})}
               closeOnClick={true}
               closeButton={false}
               latitude={result.lat}
               longitude={result.long}
             >
-              <div className="p-1 pb-0 m-0 min-w-[280px] relative z-10 rounded-xl cursor-pointer">
+              <div className="m-0 max-w-[250px] relative z-10 rounded-xl cursor-pointer">
                 <div className="relative w-auto h-[150px] mb-2">
+                  <div className="p-2 z-20 absolute top-1 right-1 cursor-pointer rounded-full transition transform duration-200">
+                    <HeartIcon className="h-6 text-white active:scale-95" fill="rgba(0, 0, 0, 0.1)" />
+                  </div>
                   <Image
-                    className="rounded"
+                    className="rounded-t-xl"
                     src={result.img}
                     layout="fill"
                     objectFit="cover"
@@ -79,18 +74,14 @@ function Map({ searchResults }) {
                     alt={result.title}
                   />
                 </div>
-                <h4 className="text-md">{result.title}</h4>
-                <div className="flex justify-between items-center relative">
-                  <div>
-                    <p className="text-md font-semibold">{result.price}</p>
-                    <p className="cursor-pointer flex items-center text-sm">
-                      <StarIcon className="h-5 text-red-500" />
-                      {result.star}
-                    </p>
-                  </div>
-                  <div className="p-2 absolute -bottom-1 -right-2 cursor-pointer rounded-full transition transform duration-200 hover:bg-gray-100">
-                    <HeartIcon className="h-6" />
-                  </div>
+                <div className="px-4 py-1 pb-4 w-auto">
+                  <p className="cursor-pointer flex items-center text-sm">
+                    <StarIcon className="h-5 text-red-500" />
+                    {result.star} <span className="ml-2 font-light text-gray-500">(42)</span>
+                  </p>
+                  <h4 className="text-md font-light truncate overflow-ellipsis">{result.location}</h4>
+                  <h4 className="text-md font-light truncate overflow-ellipsis">{result.title}</h4>
+                  <p className="text-md font-semibold">{result.price} <span className="font-normal">/ night</span></p>
                 </div>
               </div>
             </Popup>

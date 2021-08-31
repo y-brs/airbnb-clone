@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css'
 import '../styles/global.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
+import '../styles/mapbox.css';
 
 import Router from 'next/router'
 import ProgressBar from '@badrap/bar-of-progress'
@@ -15,7 +16,6 @@ const progress = new ProgressBar({
 Router.events.on("routeChangeStart", progress.start)
 Router.events.on("routeChangeComplete", progress.finish)
 Router.events.on("routeChangeError", progress.finish)
-
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />

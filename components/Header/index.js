@@ -9,7 +9,7 @@ import "react-date-range/dist/theme/default.css"
 import { DateRangePicker } from "react-date-range"
 import { useRouter } from "next/dist/client/router"
 
-export default function Header({ showBanner, placeholder }) {
+export default function Header({ searchPage, showBanner, placeholder }) {
   const [scrolled, setScrolled] = useState(false)
   const [searchInput, setSearchInput] = useState('')
   const [startDate, setStartDate] = useState(new Date())
@@ -72,7 +72,7 @@ export default function Header({ showBanner, placeholder }) {
   return (
     <>
       <header className={scrolled || searchInput || !showBanner || showResults ? 'fixed w-full top-0 z-50 bg-white shadow-md transition transform duration-200' : 'fixed w-full top-0 z-50 transition transform duration-200'}>
-        <div className="max-w-screen-2xl mx-auto flex items-start justify-between p-3.5 px-10 lg:px-20">
+        <div className={`flex items-start justify-between ${searchPage ? 'p-3.5 px-6' : 'max-w-screen-2xl mx-auto p-3.5 px-10 lg:px-20'}`}>
           <Logo backgroundFill={scrolled || searchInput || !showBanner || showResults ? '#FF385C' : '#fff'} />
 
           <div className="flex-grow lg:flex-grow-0 lg:w-[40%]">
@@ -98,6 +98,12 @@ export default function Header({ showBanner, placeholder }) {
                       onChange={handleSelect}
                       minDate={new Date()}
                       rangeColors={["#fd5961"]}
+
+
+                      // editableDateInputs={true}
+                      // onChange={item => setState([item.selection])}
+                      // moveRangeOnFirstSelection={false}
+                      // ranges={state}
                     />
                     <div className="flex items-center border-b">
                       <h2 className="text-xl flex-grow font-semibold">Number of Guests</h2>
