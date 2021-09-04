@@ -7,6 +7,24 @@ import { HeartIcon } from "@heroicons/react/outline"
 
 function Map({ searchResults }) {
   const [selectedLocation, setSelectedLocation] = useState({})
+  const [isActive, setIsActive] = useState({
+    activeObject: null,
+    object: [
+      { id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }
+    ]
+  })
+
+  function handleClick(index) {
+    setIsActive({ ...isActive, activeObject: isActive.object[index]});
+  };
+
+  function handleClickStyle(index) {
+    if (isActive.object[index] === isActive.activeObject) {
+      return "drop-shadow-sm bg-black text-white border-black scale-105"
+    } else {
+      return "hover:drop-shadow-sm bg-white text-black border-gray-300 hover:bg-gray-100 hover:scale-105 active:bg-black active:text-white"
+    }
+  };
 
   const coordinates = searchResults.map((result) => ({
     longitude: result.long,
@@ -34,17 +52,16 @@ function Map({ searchResults }) {
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
 
-      {searchResults.map(result => (
-        <div key={result.long}>
+      {searchResults.map((result, index) => (
+        <div key={index} onClick={() => {handleClick(index), setSelectedLocation(result)}} >
           <Marker
             longitude={result.long}
             latitude={result.lat}
             offsetLeft={-10}
             offsetTop={0}
-            onClick={() => setSelectedLocation(result)}
             className="active:z-20 hover:z-20 z-10"
           >
-            <p className="cursor-pointer rounded-full w-auto py-1 px-2 text-sm font-semibold border hover:drop-shadow-sm bg-white text-black border-gray-300 hover:bg-gray-100 hover:scale-105 active:bg-black active:text-white">
+            <p className={`cursor-pointer rounded-full w-auto py-1 px-2 text-sm font-semibold border ${handleClickStyle(index)}`}>
               {result.price}
             </p>
           </Marker>
